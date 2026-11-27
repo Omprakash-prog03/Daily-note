@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Install Student OS</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #F5F5F7; /* BackgroundColor from design tokens */
+            color: #1F2937;
+        }
+        .card {
+            background: #F8FAFC; /* SurfaceColor */
+            padding: 32px;
+            border-radius: 16dp; /* Corner radius from design tokens */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        h1 {
+            color: #3B82F6; /* PrimaryColor */
+            font-size: 28sp; /* DisplaySmall */
+            margin-top: 0;
+        }
+        p {
+            font-size: 16sp; /* BodyLarge */
+            line-height: 1.5;
+            color: #4B5563;
+        }
+        .install-btn {
+            display: inline-block;
+            background-color: #3B82F6;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16sp;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+        }
+        .install-btn:hover {
+            background-color: #2563EB;
+        }
+        .deep-link {
+            color: #3B82F6;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .note {
+            font-size: 12sp;
+            color: #9CA3AF;
+            margin-top: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Student OS</h1>
+        <p>The complete academic management platform for college and university students.</p>
+        
+        <!-- Option 1: Deep Link (Requires app installed) -->
+        <p>Already installed? <a href="studentos://main" class="deep-link">Open Student OS</a></p>
+        
+        <!-- Option 2: Direct APK Download (Requires build artifact) -->
+        <a href="https://github.com/Omprakash-prog03/Daily-note/releases/download/v1.0.1/app-release.apk" class="install-btn">
+            Download & Install APK (v1.0.1)
+        </a>
+        
+        <p class="note">
+            <strong>Note:</strong> For mobile installation, ensure "Install from unknown sources" is enabled in Chrome settings or use the ADB command:
+            <br><code>adb install -r app/build/outputs/apk/release/app-release.apk</code>
+        </p>
+        
+        <p class="note">
+            Source Code & Engineering Report: <a href="https://github.com/Omprakash-prog03/Daily-note/tree/arena/9b0e1c49-daily-note" class="deep-link">GitHub Branch</a>
+        </p>
+    </div>
+</body>
+</html>

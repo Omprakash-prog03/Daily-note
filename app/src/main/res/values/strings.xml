@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Student OS</string>
+    <string name="app_short_name">StudentOS</string>
+    <string name="app_description">Complete academic management platform for college and university students.</string>
+</resources>
