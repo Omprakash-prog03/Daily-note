@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Student OS</string>
+    <string name="navigation_home">Home</string>
+    <string name="navigation_attendance">Attendance</string>
+    <string name="navigation_subjects">Subjects</string>
+    <string name="navigation_planner">Planner</string>
+    <string name="navigation_profile">Profile</string>
+</resources>
