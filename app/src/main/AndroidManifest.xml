@@ -2,10 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Permissions for Mobile Installable App -->
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Optional sync -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Feature requirements for mobile devices -->
+    <uses-feature android:name="android.hardware.touchscreen" android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -16,25 +22,51 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StudentOS"
+        android:usesCleartextTraffic="false"
+        android:hardwareAccelerated="true"
         tools:targetApi="34">
 
+        <!-- Main Activity with Intent Filter for Mobile Launch -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.StudentOS.Splash">
+            android:theme="@style/Theme.StudentOS.Splash"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <!-- App Link / Deep Link support for mobile integration -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="studentos" android:host="main" />
+            </intent-filter>
         </activity>
 
+        <!-- Background Services & Receivers -->
         <service
             android:name=".utils.NotificationService"
-            android:exported="false" />
+            android:exported="false"
+            android:foregroundServiceType="dataSync|location|mediaPlayback|microphone|phoneCall|connectedDevice|camera|health|specialUse" />
 
         <receiver
             android:name=".utils.AlarmReceiver"
             android:exported="false" />
+
+        <!-- WorkManager Configuration -->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <meta-data
+                android:name="androidx.work.impl.WorkManagerInitializer"
+                android:value="androidx.startup"
+                android:enabled="false" />
+        </provider>
 
     </application>
 
